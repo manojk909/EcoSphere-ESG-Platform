@@ -8,6 +8,7 @@ import {
   Factory,
   Footprints,
   Target,
+  BarChart3,
   Heart,
   Users,
   PieChart,
@@ -19,9 +20,6 @@ import {
   Gift,
   Award,
   Settings,
-  Building2,
-  Tags,
-  Wrench,
   ChevronLeft,
   ChevronRight,
   FileText,
@@ -60,6 +58,7 @@ const navGroups: NavGroup[] = [
     textColor: 'text-env-primary',
     bgColor: 'bg-env-light',
     items: [
+      { label: 'Dashboard', path: '/environmental/dashboard', icon: <BarChart3 className="h-4 w-4" /> },
       { label: 'Emission Factors', path: '/environmental/emission-factors', icon: <Factory className="h-4 w-4" /> },
       { label: 'Carbon Tracking', path: '/environmental/carbon-tracking', icon: <Footprints className="h-4 w-4" /> },
       { label: 'Goals', path: '/environmental/goals', icon: <Target className="h-4 w-4" /> },
@@ -100,14 +99,12 @@ const navGroups: NavGroup[] = [
     ],
   },
   {
-    title: 'Settings',
+    title: '',
     color: 'text-text-secondary',
     textColor: 'text-text-primary',
     bgColor: 'bg-bg',
     items: [
-      { label: 'Departments', path: '/settings/departments', icon: <Building2 className="h-4 w-4" /> },
-      { label: 'Categories', path: '/settings/categories', icon: <Tags className="h-4 w-4" /> },
-      { label: 'Configuration', path: '/settings/configuration', icon: <Wrench className="h-4 w-4" /> },
+      { label: 'Settings', path: '/settings', icon: <Settings className="h-4 w-4" /> },
     ],
   },
 ]
@@ -197,7 +194,7 @@ export default function Sidebar() {
       {/* User role + collapse */}
       <div className="p-3 shrink-0">
         {!collapsed && user && (
-          <div className="flex items-center gap-2 px-3 py-2 mb-2 rounded-lg bg-bg">
+          <NavLink to="/profile" className="flex items-center gap-2 px-3 py-2 mb-2 rounded-lg bg-bg hover:shadow-sm transition-shadow cursor-pointer">
             <div className="w-7 h-7 rounded-full bg-gradient-to-br from-env-primary to-social-primary flex items-center justify-center text-white text-xs font-bold">
               {user.name.charAt(0).toUpperCase()}
             </div>
@@ -207,7 +204,7 @@ export default function Sidebar() {
                 {user.role}
               </Badge>
             </div>
-          </div>
+          </NavLink>
         )}
         <button
           onClick={() => setCollapsed(!collapsed)}

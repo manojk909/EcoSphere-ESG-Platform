@@ -404,6 +404,107 @@ Employees who demonstrate exceptional sustainability leadership may be recognize
 
   console.log(`   ✅ 2 policies: "${policy1.title}", "${policy2.title}"\n`);
 
+  // ─── Step 11: Carbon Transactions ─────────────────
+  console.log('🏭 Creating carbon transactions...');
+
+  await prisma.carbonTransaction.create({ data: { sourceType: 'PURCHASE', sourceRefId: 'PO-2024-001', emissionFactorId: ef1.id, quantity: 5000, co2Calculated: 2100, departmentId: opsDept.id, date: new Date('2024-04-15') } });
+  await prisma.carbonTransaction.create({ data: { sourceType: 'FLEET', sourceRefId: 'FL-2024-012', emissionFactorId: ef2.id, quantity: 800, co2Calculated: 2144, departmentId: opsDept.id, date: new Date('2024-05-10') } });
+  await prisma.carbonTransaction.create({ data: { sourceType: 'EXPENSE', sourceRefId: 'EXP-2024-045', emissionFactorId: ef3.id, quantity: 12000, co2Calculated: 3060, departmentId: engDept.id, date: new Date('2024-05-20') } });
+  await prisma.carbonTransaction.create({ data: { sourceType: 'MANUFACTURING', sourceRefId: 'MFG-2024-007', emissionFactorId: ef4.id, quantity: 2500, co2Calculated: 1450, departmentId: engDept.id, date: new Date('2024-06-01') } });
+  await prisma.carbonTransaction.create({ data: { sourceType: 'PURCHASE', sourceRefId: 'PO-2024-018', emissionFactorId: ef5.id, quantity: 1500, co2Calculated: 516, departmentId: opsDept.id, date: new Date('2024-06-15') } });
+  await prisma.carbonTransaction.create({ data: { sourceType: 'FLEET', sourceRefId: 'FL-2024-025', emissionFactorId: ef2.id, quantity: 350, co2Calculated: 938, departmentId: engDept.id, date: new Date('2024-07-02') } });
+
+  console.log('   ✅ 6 carbon transactions\n');
+
+  // ─── Step 12: Environmental Goals ─────────────────
+  console.log('🎯 Creating environmental goals...');
+
+  await prisma.environmentalGoal.create({ data: { departmentId: opsDept.id, metricName: 'Carbon Reduction (tonnes CO₂)', targetValue: 1000, currentValue: 650, periodStart: new Date('2024-01-01'), periodEnd: new Date('2024-12-31') } });
+  await prisma.environmentalGoal.create({ data: { departmentId: engDept.id, metricName: 'Energy Efficiency (kWh saved)', targetValue: 5000, currentValue: 3200, periodStart: new Date('2024-01-01'), periodEnd: new Date('2024-12-31') } });
+  await prisma.environmentalGoal.create({ data: { departmentId: opsDept.id, metricName: 'Water Conservation (m³)', targetValue: 200, currentValue: 180, periodStart: new Date('2024-06-01'), periodEnd: new Date('2024-12-31') } });
+
+  console.log('   ✅ 3 environmental goals\n');
+
+  // ─── Step 13: CSR Activities + Participations ─────
+  console.log('🤝 Creating CSR activities...');
+
+  const csr1 = await prisma.csrActivity.create({ data: { title: 'Beach Cleanup Drive', categoryId: csrCat2.id, description: 'Organized a beach cleanup at Juhu Beach, collected 200+ kg of waste.', date: new Date('2024-05-15'), departmentId: opsDept.id } });
+  const csr2 = await prisma.csrActivity.create({ data: { title: 'Rural School Teaching Program', categoryId: csrCat3.id, description: 'Weekend teaching program for underprivileged children in rural areas.', date: new Date('2024-06-01'), departmentId: engDept.id } });
+  const csr3 = await prisma.csrActivity.create({ data: { title: 'Blood Donation Camp', categoryId: csrCat1.id, description: 'Annual blood donation camp organized in collaboration with Red Cross.', date: new Date('2024-06-20'), departmentId: opsDept.id } });
+
+  // Participations
+  await prisma.employeeParticipation.create({ data: { employeeId: emp1.id, activityId: csr1.id, proofUrl: 'https://drive.google.com/proof1', approvalStatus: 'APPROVED', pointsEarned: 25, completionDate: new Date('2024-05-15') } });
+  await prisma.employeeParticipation.create({ data: { employeeId: emp3.id, activityId: csr1.id, proofUrl: 'https://drive.google.com/proof2', approvalStatus: 'APPROVED', pointsEarned: 25, completionDate: new Date('2024-05-15') } });
+  await prisma.employeeParticipation.create({ data: { employeeId: emp4.id, activityId: csr2.id, proofUrl: 'https://drive.google.com/proof3', approvalStatus: 'APPROVED', pointsEarned: 30, completionDate: new Date('2024-06-01') } });
+  await prisma.employeeParticipation.create({ data: { employeeId: emp5.id, activityId: csr2.id, approvalStatus: 'PENDING' } });
+  await prisma.employeeParticipation.create({ data: { employeeId: emp2.id, activityId: csr3.id, proofUrl: 'https://drive.google.com/proof4', approvalStatus: 'APPROVED', pointsEarned: 20, completionDate: new Date('2024-06-20') } });
+  await prisma.employeeParticipation.create({ data: { employeeId: emp7.id, activityId: csr3.id, approvalStatus: 'PENDING' } });
+
+  console.log('   ✅ 3 CSR activities with 6 participations\n');
+
+  // ─── Step 14: Challenges + Participations ─────────
+  console.log('🏆 Creating challenges...');
+
+  const ch1 = await prisma.challenge.create({ data: { title: 'Zero Waste Week', categoryId: chalCat2.id, description: 'Go an entire week generating zero landfill waste. Document your journey!', xp: 100, difficulty: 'Medium', evidenceRequired: true, deadline: new Date('2024-09-30'), status: 'ACTIVE' } });
+  const ch2 = await prisma.challenge.create({ data: { title: 'Cycle to Work Month', categoryId: chalCat3.id, description: 'Use a bicycle or walk to work for an entire month to reduce transport emissions.', xp: 200, difficulty: 'Hard', evidenceRequired: true, deadline: new Date('2024-08-31'), status: 'COMPLETED' } });
+  const ch3 = await prisma.challenge.create({ data: { title: 'Smart Energy Audit', categoryId: chalCat1.id, description: 'Perform a personal energy audit of your workspace and suggest 3 improvements.', xp: 50, difficulty: 'Easy', evidenceRequired: false, deadline: new Date('2024-12-31'), status: 'DRAFT' } });
+
+  // Participations for active challenge
+  await prisma.challengeParticipation.create({ data: { challengeId: ch1.id, employeeId: emp1.id, progress: 60, approvalStatus: 'PENDING' } });
+  await prisma.challengeParticipation.create({ data: { challengeId: ch1.id, employeeId: emp4.id, progress: 100, proofUrl: 'https://drive.google.com/ch-proof1', approvalStatus: 'PENDING' } });
+  await prisma.challengeParticipation.create({ data: { challengeId: ch2.id, employeeId: emp3.id, progress: 100, proofUrl: 'https://drive.google.com/ch-proof2', approvalStatus: 'APPROVED', xpAwarded: 200 } });
+
+  console.log('   ✅ 3 challenges with 3 participations\n');
+
+  // ─── Step 15: Audits + Compliance Issues ──────────
+  console.log('🔍 Creating audits and compliance issues...');
+
+  const audit1 = await prisma.audit.create({ data: { scope: 'Q2 Environmental Compliance Review', departmentId: opsDept.id, date: new Date('2024-06-15'), auditorId: opsHead.id, status: 'COMPLETED' } });
+  const audit2 = await prisma.audit.create({ data: { scope: 'H1 Social Governance Audit', departmentId: engDept.id, date: new Date('2024-07-01'), auditorId: engHead.id, status: 'SCHEDULED' } });
+
+  await prisma.complianceIssue.create({ data: { auditId: audit1.id, severity: 'HIGH', description: 'Emission data reporting delayed by more than 15 days for 3 consecutive months.', ownerId: emp1.id, dueDate: new Date('2024-07-15'), status: 'IN_PROGRESS' } });
+  await prisma.complianceIssue.create({ data: { auditId: audit1.id, severity: 'MEDIUM', description: 'Missing documentation for fleet diesel consumption in April.', ownerId: emp2.id, dueDate: new Date('2024-07-30'), status: 'OPEN' } });
+  // Overdue issue
+  await prisma.complianceIssue.create({ data: { auditId: audit1.id, severity: 'CRITICAL', description: 'Hazardous waste disposal procedure not following updated EPA guidelines.', ownerId: emp3.id, dueDate: new Date('2024-06-01'), status: 'OPEN' } });
+
+  console.log('   ✅ 2 audits with 3 compliance issues\n');
+
+  // ─── Step 16: Department Scores ───────────────────
+  console.log('📊 Creating department scores...');
+
+  await prisma.departmentScore.create({ data: { departmentId: opsDept.id, period: '2024-Q2', envScore: 82, socialScore: 74, govScore: 85, totalScore: 80.3 } });
+  await prisma.departmentScore.create({ data: { departmentId: engDept.id, period: '2024-Q2', envScore: 78, socialScore: 80, govScore: 72, totalScore: 76.8 } });
+
+  console.log('   ✅ 2 department scores\n');
+
+  // ─── Step 17: Award Badges ────────────────────────
+  console.log('🏅 Awarding badges...');
+
+  await prisma.employeeBadge.create({ data: { employeeId: emp3.id, badgeId: badge2.id } }); // Neha 500XP => Green Warrior
+  await prisma.employeeBadge.create({ data: { employeeId: emp1.id, badgeId: badge1.id } }); // Ananya 1 CSR => First Step
+
+  console.log('   ✅ 2 badge awards\n');
+
+  // ─── Step 18: Notifications ───────────────────────
+  console.log('🔔 Creating notifications...');
+
+  await prisma.notification.create({ data: { employeeId: emp3.id, type: 'BADGE_AWARDED', message: 'Congratulations! You\'ve earned the "Green Warrior" badge.' } });
+  await prisma.notification.create({ data: { employeeId: emp1.id, type: 'BADGE_AWARDED', message: 'Congratulations! You\'ve earned the "First Step" badge.' } });
+  await prisma.notification.create({ data: { employeeId: emp1.id, type: 'CSR_APPROVAL', message: 'Your participation in "Beach Cleanup Drive" has been approved! +25 points.' } });
+  await prisma.notification.create({ data: { employeeId: emp5.id, type: 'CSR_PENDING', message: 'Your participation in "Rural School Teaching Program" is pending review.' } });
+
+  console.log('   ✅ 4 notifications\n');
+
+  // ─── Step 19: Policy Acknowledgements ─────────────
+  console.log('📝 Creating policy acknowledgements...');
+
+  await prisma.policyAcknowledgement.create({ data: { policyId: policy1.id, employeeId: admin.id } });
+  await prisma.policyAcknowledgement.create({ data: { policyId: policy1.id, employeeId: opsHead.id } });
+  await prisma.policyAcknowledgement.create({ data: { policyId: policy2.id, employeeId: admin.id } });
+  await prisma.policyAcknowledgement.create({ data: { policyId: policy1.id, employeeId: emp3.id } });
+
+  console.log('   ✅ 4 policy acknowledgements\n');
+
   // ─── Summary ──────────────────────────────────────
   console.log('═══════════════════════════════════════════');
   console.log('🌍 Seed completed successfully!');
@@ -415,9 +516,16 @@ Employees who demonstrate exceptional sustainability leadership may be recognize
   console.log(`   • 10 Employees (1 Admin, 2 Dept Heads, 7 Employees)`);
   console.log(`   • 6 Categories (3 CSR, 3 Challenge)`);
   console.log(`   • 5 Emission Factors`);
-  console.log(`   • 4 Badges`);
+  console.log(`   • 4 Badges + 2 Awards`);
   console.log(`   • 3 Rewards`);
-  console.log(`   • 2 ESG Policies`);
+  console.log(`   • 2 ESG Policies + 4 Acknowledgements`);
+  console.log(`   • 6 Carbon Transactions`);
+  console.log(`   • 3 Environmental Goals`);
+  console.log(`   • 3 CSR Activities + 6 Participations`);
+  console.log(`   • 3 Challenges + 3 Participations`);
+  console.log(`   • 2 Audits + 3 Compliance Issues`);
+  console.log(`   • 2 Department Scores`);
+  console.log(`   • 4 Notifications`);
   console.log('');
   console.log('🔑 Login credentials:');
   console.log('   Admin:     admin@ecosphere.com / Admin@123');

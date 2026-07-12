@@ -10,7 +10,7 @@ interface DashboardStats {
   transactionCount: number;
 }
 
-export function Dashboard() {
+export default function Dashboard() {
   const [stats, setStats] = useState<DashboardStats | null>(null);
   const [loading, setLoading] = useState(true);
 

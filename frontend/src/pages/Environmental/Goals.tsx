@@ -26,7 +26,7 @@ interface Department {
   name: string;
 }
 
-export function Goals() {
+export default function Goals() {
   const { user } = useAuth();
   const { toast } = useToast();
   const [goals, setGoals] = useState<EnvironmentalGoal[]>([]);

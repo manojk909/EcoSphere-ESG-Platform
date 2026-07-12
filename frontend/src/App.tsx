@@ -6,6 +6,8 @@ import Login from '@/pages/Login'
 import Signup from '@/pages/Signup'
 import Dashboard from '@/pages/Dashboard'
 import Reports from '@/pages/Reports'
+import Settings from '@/pages/Settings'
+import Profile from '@/pages/Profile'
 import { Loader2 } from 'lucide-react'
 
 // Environmental Pages
@@ -72,21 +74,6 @@ function PublicRoute() {
   return <Outlet />
 }
 
-// Placeholder component for module pages not yet built
-function ModulePlaceholder({ title, color }: { title: string; color: string }) {
-  return (
-    <div className="flex flex-col items-center justify-center min-h-[60vh] text-center">
-      <div className={`w-16 h-16 rounded-2xl ${color} flex items-center justify-center mb-4`}>
-        <span className="text-2xl">🚧</span>
-      </div>
-      <h2 className="text-xl font-semibold text-text-primary mb-2">{title}</h2>
-      <p className="text-text-secondary max-w-md">
-        This module is under construction. Check back soon for exciting ESG management features!
-      </p>
-    </div>
-  )
-}
-
 export default function App() {
   return (
     <Routes>
@@ -101,6 +88,8 @@ export default function App() {
         <Route element={<AppShell />}>
           <Route path="/" element={<Dashboard />} />
           <Route path="/reports" element={<Reports />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/settings" element={<Settings />} />
 
           {/* Environmental */}
           <Route path="/environmental/dashboard" element={<EnvDashboard />} />
@@ -123,11 +112,6 @@ export default function App() {
           <Route path="/gamification/leaderboard" element={<Leaderboard />} />
           <Route path="/gamification/rewards" element={<Rewards />} />
           <Route path="/gamification/badges" element={<Badges />} />
-
-          {/* Settings */}
-          <Route path="/settings/departments" element={<ModulePlaceholder title="Departments" color="bg-bg" />} />
-          <Route path="/settings/categories" element={<ModulePlaceholder title="Categories" color="bg-bg" />} />
-          <Route path="/settings/configuration" element={<ModulePlaceholder title="Configuration" color="bg-bg" />} />
         </Route>
       </Route>
 

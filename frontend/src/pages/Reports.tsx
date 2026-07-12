@@ -18,7 +18,9 @@ export default function Reports() {
   })
 
   useEffect(() => {
-    api.get<any[]>('/departments').then(setDepartments).catch(console.error)
+    api.get<any[]>('/departments')
+      .then(data => setDepartments(Array.isArray(data) ? data : []))
+      .catch(console.error)
   }, [])
 
   const handleExport = async () => {

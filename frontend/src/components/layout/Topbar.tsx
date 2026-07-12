@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useAuth } from '@/context/AuthContext'
 import { api } from '@/lib/api'
@@ -27,6 +27,7 @@ const pageTitles: Record<string, string> = {
   '/environmental/emission-factors': 'Emission Factors',
   '/environmental/carbon-tracking': 'Carbon Tracking',
   '/environmental/goals': 'Environmental Goals',
+  '/environmental/dashboard': 'Environmental Dashboard',
   '/social/csr-activities': 'CSR Activities',
   '/social/participation': 'Participation',
   '/social/diversity': 'Diversity & Inclusion',
@@ -37,6 +38,7 @@ const pageTitles: Record<string, string> = {
   '/gamification/leaderboard': 'Leaderboard',
   '/gamification/rewards': 'Rewards',
   '/gamification/badges': 'Badges',
+  '/reports': 'Reports',
   '/settings/departments': 'Departments',
   '/settings/categories': 'Categories',
   '/settings/configuration': 'Configuration',
@@ -57,13 +59,11 @@ export default function Topbar() {
   const [notifications, setNotifications] = useState<any[]>([])
   const pageTitle = getPageTitle(location.pathname)
 
-  import('react').then((React) => {
-    React.useEffect(() => {
-      if (user) {
-        api.get<any[]>('/notifications').then(setNotifications).catch(console.error)
-      }
-    }, [user])
-  })
+  useEffect(() => {
+    if (user) {
+      api.get<any[]>('/notifications').then(setNotifications).catch(console.error)
+    }
+  }, [user])
 
   const unreadCount = notifications.filter(n => !n.isRead).length
 
@@ -180,11 +180,11 @@ export default function Topbar() {
                 <DropdownMenuSeparator />
               </>
             )}
-            <DropdownMenuItem className="cursor-pointer">
+            <DropdownMenuItem className="cursor-pointer" onClick={() => navigate('/profile')}>
               <User className="mr-2 h-4 w-4" />
               <span>Profile</span>
             </DropdownMenuItem>
-            <DropdownMenuItem className="cursor-pointer">
+            <DropdownMenuItem className="cursor-pointer" onClick={() => navigate('/settings')}>
               <Settings className="mr-2 h-4 w-4" />
               <span>Settings</span>
             </DropdownMenuItem>

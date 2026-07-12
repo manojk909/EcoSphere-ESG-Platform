@@ -27,7 +27,7 @@ interface EmissionFactor {
   unit: string;
 }
 
-export function CarbonTracking() {
+export default function CarbonTracking() {
   const { toast } = useToast();
   const [transactions, setTransactions] = useState<CarbonTransaction[]>([]);
   const [factors, setFactors] = useState<EmissionFactor[]>([]);

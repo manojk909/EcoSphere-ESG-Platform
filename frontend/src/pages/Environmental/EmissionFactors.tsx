@@ -17,7 +17,7 @@ interface EmissionFactor {
   status: 'ACTIVE' | 'INACTIVE';
 }
 
-export function EmissionFactors() {
+export default function EmissionFactors() {
   const { user } = useAuth();
   const { toast } = useToast();
   const [factors, setFactors] = useState<EmissionFactor[]>([]);
