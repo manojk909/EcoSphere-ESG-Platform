@@ -13,7 +13,7 @@ router.get('/dashboard', async (req: Request, res: Response, next: NextFunction)
       orderBy: { calculatedAt: 'desc' }
     });
     
-    let scores = [];
+    let scores: any[] = [];
     let overallESG = 0;
     
     if (latestScore) {
