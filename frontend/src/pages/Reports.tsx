@@ -20,8 +20,8 @@ function PreBuiltReports() {
   const [loading, setLoading] = useState<string | null>(null)
 
   useEffect(() => {
-    api.get<Department[]>('/departments')
-      .then(d => setDepartments(Array.isArray(d) ? d : []))
+    api.get<any>('/departments')
+      .then(res => setDepartments(Array.isArray(res) ? res : res.departments || []))
       .catch(console.error)
   }, [])
 
@@ -77,8 +77,8 @@ function CustomReportBuilder() {
   })
 
   useEffect(() => {
-    api.get<Department[]>('/departments')
-      .then(d => setDepartments(Array.isArray(d) ? d : []))
+    api.get<any>('/departments')
+      .then(res => setDepartments(Array.isArray(res) ? res : res.departments || []))
       .catch(console.error)
   }, [])
 

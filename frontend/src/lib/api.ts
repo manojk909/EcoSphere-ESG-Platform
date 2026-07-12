@@ -18,7 +18,7 @@ class ApiClient {
     const response = await fetch(`${API_BASE}${endpoint}`, { ...options, headers });
     if (!response.ok) {
       const error = await response.json().catch(() => ({ message: 'An unexpected error occurred' }));
-      throw new Error(error.message || `Request failed with status ${response.status}`);
+      throw new Error(error.error || error.message || `Request failed with status ${response.status}`);
     }
     return response.json();
   }

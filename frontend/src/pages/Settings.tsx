@@ -34,12 +34,14 @@ function DepartmentsTab() {
 
   const fetchData = async () => {
     try {
-      const [depts, emps] = await Promise.all([
-        api.get<Department[]>('/departments'),
-        api.get<Employee[]>('/employees')
+      const [deptRes, empRes] = await Promise.all([
+        api.get<any>('/departments'),
+        api.get<any>('/employees')
       ])
-      setDepartments(Array.isArray(depts) ? depts : [])
-      setEmployees(Array.isArray(emps) ? emps : [])
+      const depts = Array.isArray(deptRes) ? deptRes : deptRes.departments || []
+      const emps = Array.isArray(empRes) ? empRes : empRes.employees || []
+      setDepartments(depts)
+      setEmployees(emps)
     } catch { } finally { setLoading(false) }
   }
 

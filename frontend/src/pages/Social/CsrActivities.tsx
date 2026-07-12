@@ -35,7 +35,7 @@ export default function CsrActivities() {
   useEffect(() => {
     fetchActivities();
     api.get<Category[]>('/categories?type=CSR').then(d => setCategories(Array.isArray(d) ? d : [])).catch(console.error);
-    api.get<Department[]>('/departments').then(d => setDepartments(Array.isArray(d) ? d : [])).catch(console.error);
+    api.get<any>('/departments').then(res => setDepartments(Array.isArray(res) ? res : res.departments || [])).catch(console.error);
   }, []);
 
   const fetchActivities = async () => {

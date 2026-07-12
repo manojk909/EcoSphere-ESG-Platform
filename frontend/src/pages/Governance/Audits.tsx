@@ -47,8 +47,8 @@ export default function Audits() {
 
   useEffect(() => {
     fetchAudits()
-    api.get<Department[]>('/departments').then(setDepartments).catch(console.error)
-    api.get<Employee[]>('/employees').then(setEmployees).catch(console.error)
+    api.get<any>('/departments').then(res => setDepartments(Array.isArray(res) ? res : res.departments || [])).catch(console.error)
+    api.get<any>('/employees').then(res => setEmployees(Array.isArray(res) ? res : res.employees || [])).catch(console.error)
   }, [])
 
   const fetchAudits = async () => {

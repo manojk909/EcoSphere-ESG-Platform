@@ -38,8 +38,8 @@ export default function Leaderboard() {
 
   const fetchDepartments = async () => {
     try {
-      const data = await api.get<Department[]>('/departments');
-      setDepartments(data);
+      const res = await api.get<any>('/departments');
+      setDepartments(Array.isArray(res) ? res : res.departments || []);
     } catch (error) {
       console.error('Failed to fetch departments', error);
     }

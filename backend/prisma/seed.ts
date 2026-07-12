@@ -407,37 +407,37 @@ Employees who demonstrate exceptional sustainability leadership may be recognize
   // ─── Step 11: Carbon Transactions ─────────────────
   console.log('🏭 Creating carbon transactions...');
 
-  await prisma.carbonTransaction.create({ data: { sourceType: 'PURCHASE', sourceRefId: 'PO-2024-001', emissionFactorId: ef1.id, quantity: 5000, co2Calculated: 2100, departmentId: opsDept.id, date: new Date('2024-04-15') } });
-  await prisma.carbonTransaction.create({ data: { sourceType: 'FLEET', sourceRefId: 'FL-2024-012', emissionFactorId: ef2.id, quantity: 800, co2Calculated: 2144, departmentId: opsDept.id, date: new Date('2024-05-10') } });
-  await prisma.carbonTransaction.create({ data: { sourceType: 'EXPENSE', sourceRefId: 'EXP-2024-045', emissionFactorId: ef3.id, quantity: 12000, co2Calculated: 3060, departmentId: engDept.id, date: new Date('2024-05-20') } });
-  await prisma.carbonTransaction.create({ data: { sourceType: 'MANUFACTURING', sourceRefId: 'MFG-2024-007', emissionFactorId: ef4.id, quantity: 2500, co2Calculated: 1450, departmentId: engDept.id, date: new Date('2024-06-01') } });
-  await prisma.carbonTransaction.create({ data: { sourceType: 'PURCHASE', sourceRefId: 'PO-2024-018', emissionFactorId: ef5.id, quantity: 1500, co2Calculated: 516, departmentId: opsDept.id, date: new Date('2024-06-15') } });
-  await prisma.carbonTransaction.create({ data: { sourceType: 'FLEET', sourceRefId: 'FL-2024-025', emissionFactorId: ef2.id, quantity: 350, co2Calculated: 938, departmentId: engDept.id, date: new Date('2024-07-02') } });
+  await prisma.carbonTransaction.create({ data: { sourceType: 'PURCHASE', sourceRefId: 'PO-2026-001', emissionFactorId: ef1.id, quantity: 5000, co2Calculated: 2100, departmentId: opsDept.id, date: new Date('2026-04-15') } });
+  await prisma.carbonTransaction.create({ data: { sourceType: 'FLEET', sourceRefId: 'FL-2026-012', emissionFactorId: ef2.id, quantity: 800, co2Calculated: 2144, departmentId: opsDept.id, date: new Date('2026-05-10') } });
+  await prisma.carbonTransaction.create({ data: { sourceType: 'EXPENSE', sourceRefId: 'EXP-2026-045', emissionFactorId: ef3.id, quantity: 12000, co2Calculated: 3060, departmentId: engDept.id, date: new Date('2026-05-20') } });
+  await prisma.carbonTransaction.create({ data: { sourceType: 'MANUFACTURING', sourceRefId: 'MFG-2026-007', emissionFactorId: ef4.id, quantity: 2500, co2Calculated: 1450, departmentId: engDept.id, date: new Date('2026-06-01') } });
+  await prisma.carbonTransaction.create({ data: { sourceType: 'PURCHASE', sourceRefId: 'PO-2026-018', emissionFactorId: ef5.id, quantity: 1500, co2Calculated: 516, departmentId: opsDept.id, date: new Date('2026-06-15') } });
+  await prisma.carbonTransaction.create({ data: { sourceType: 'FLEET', sourceRefId: 'FL-2026-025', emissionFactorId: ef2.id, quantity: 350, co2Calculated: 938, departmentId: engDept.id, date: new Date('2026-07-02') } });
 
   console.log('   ✅ 6 carbon transactions\n');
 
   // ─── Step 12: Environmental Goals ─────────────────
   console.log('🎯 Creating environmental goals...');
 
-  await prisma.environmentalGoal.create({ data: { departmentId: opsDept.id, metricName: 'Carbon Reduction (tonnes CO₂)', targetValue: 1000, currentValue: 650, periodStart: new Date('2024-01-01'), periodEnd: new Date('2024-12-31') } });
-  await prisma.environmentalGoal.create({ data: { departmentId: engDept.id, metricName: 'Energy Efficiency (kWh saved)', targetValue: 5000, currentValue: 3200, periodStart: new Date('2024-01-01'), periodEnd: new Date('2024-12-31') } });
-  await prisma.environmentalGoal.create({ data: { departmentId: opsDept.id, metricName: 'Water Conservation (m³)', targetValue: 200, currentValue: 180, periodStart: new Date('2024-06-01'), periodEnd: new Date('2024-12-31') } });
+  await prisma.environmentalGoal.create({ data: { departmentId: opsDept.id, metricName: 'Carbon Reduction (tonnes CO₂)', targetValue: 1000, currentValue: 650, periodStart: new Date('2026-01-01'), periodEnd: new Date('2026-12-31') } });
+  await prisma.environmentalGoal.create({ data: { departmentId: engDept.id, metricName: 'Energy Efficiency (kWh saved)', targetValue: 5000, currentValue: 3200, periodStart: new Date('2026-01-01'), periodEnd: new Date('2026-12-31') } });
+  await prisma.environmentalGoal.create({ data: { departmentId: opsDept.id, metricName: 'Water Conservation (m³)', targetValue: 200, currentValue: 180, periodStart: new Date('2026-06-01'), periodEnd: new Date('2026-12-31') } });
 
   console.log('   ✅ 3 environmental goals\n');
 
   // ─── Step 13: CSR Activities + Participations ─────
   console.log('🤝 Creating CSR activities...');
 
-  const csr1 = await prisma.csrActivity.create({ data: { title: 'Beach Cleanup Drive', categoryId: csrCat2.id, description: 'Organized a beach cleanup at Juhu Beach, collected 200+ kg of waste.', date: new Date('2024-05-15'), departmentId: opsDept.id } });
-  const csr2 = await prisma.csrActivity.create({ data: { title: 'Rural School Teaching Program', categoryId: csrCat3.id, description: 'Weekend teaching program for underprivileged children in rural areas.', date: new Date('2024-06-01'), departmentId: engDept.id } });
-  const csr3 = await prisma.csrActivity.create({ data: { title: 'Blood Donation Camp', categoryId: csrCat1.id, description: 'Annual blood donation camp organized in collaboration with Red Cross.', date: new Date('2024-06-20'), departmentId: opsDept.id } });
+  const csr1 = await prisma.csrActivity.create({ data: { title: 'Beach Cleanup Drive', categoryId: csrCat2.id, description: 'Organized a beach cleanup at Juhu Beach, collected 200+ kg of waste.', date: new Date('2026-05-15'), departmentId: opsDept.id } });
+  const csr2 = await prisma.csrActivity.create({ data: { title: 'Rural School Teaching Program', categoryId: csrCat3.id, description: 'Weekend teaching program for underprivileged children in rural areas.', date: new Date('2026-06-01'), departmentId: engDept.id } });
+  const csr3 = await prisma.csrActivity.create({ data: { title: 'Blood Donation Camp', categoryId: csrCat1.id, description: 'Annual blood donation camp organized in collaboration with Red Cross.', date: new Date('2026-06-20'), departmentId: opsDept.id } });
 
   // Participations
-  await prisma.employeeParticipation.create({ data: { employeeId: emp1.id, activityId: csr1.id, proofUrl: 'https://drive.google.com/proof1', approvalStatus: 'APPROVED', pointsEarned: 25, completionDate: new Date('2024-05-15') } });
-  await prisma.employeeParticipation.create({ data: { employeeId: emp3.id, activityId: csr1.id, proofUrl: 'https://drive.google.com/proof2', approvalStatus: 'APPROVED', pointsEarned: 25, completionDate: new Date('2024-05-15') } });
-  await prisma.employeeParticipation.create({ data: { employeeId: emp4.id, activityId: csr2.id, proofUrl: 'https://drive.google.com/proof3', approvalStatus: 'APPROVED', pointsEarned: 30, completionDate: new Date('2024-06-01') } });
+  await prisma.employeeParticipation.create({ data: { employeeId: emp1.id, activityId: csr1.id, proofUrl: 'https://drive.google.com/proof1', approvalStatus: 'APPROVED', pointsEarned: 25, completionDate: new Date('2026-05-15') } });
+  await prisma.employeeParticipation.create({ data: { employeeId: emp3.id, activityId: csr1.id, proofUrl: 'https://drive.google.com/proof2', approvalStatus: 'APPROVED', pointsEarned: 25, completionDate: new Date('2026-05-15') } });
+  await prisma.employeeParticipation.create({ data: { employeeId: emp4.id, activityId: csr2.id, proofUrl: 'https://drive.google.com/proof3', approvalStatus: 'APPROVED', pointsEarned: 30, completionDate: new Date('2026-06-01') } });
   await prisma.employeeParticipation.create({ data: { employeeId: emp5.id, activityId: csr2.id, approvalStatus: 'PENDING' } });
-  await prisma.employeeParticipation.create({ data: { employeeId: emp2.id, activityId: csr3.id, proofUrl: 'https://drive.google.com/proof4', approvalStatus: 'APPROVED', pointsEarned: 20, completionDate: new Date('2024-06-20') } });
+  await prisma.employeeParticipation.create({ data: { employeeId: emp2.id, activityId: csr3.id, proofUrl: 'https://drive.google.com/proof4', approvalStatus: 'APPROVED', pointsEarned: 20, completionDate: new Date('2026-06-20') } });
   await prisma.employeeParticipation.create({ data: { employeeId: emp7.id, activityId: csr3.id, approvalStatus: 'PENDING' } });
 
   console.log('   ✅ 3 CSR activities with 6 participations\n');
@@ -445,9 +445,9 @@ Employees who demonstrate exceptional sustainability leadership may be recognize
   // ─── Step 14: Challenges + Participations ─────────
   console.log('🏆 Creating challenges...');
 
-  const ch1 = await prisma.challenge.create({ data: { title: 'Zero Waste Week', categoryId: chalCat2.id, description: 'Go an entire week generating zero landfill waste. Document your journey!', xp: 100, difficulty: 'Medium', evidenceRequired: true, deadline: new Date('2024-09-30'), status: 'ACTIVE' } });
-  const ch2 = await prisma.challenge.create({ data: { title: 'Cycle to Work Month', categoryId: chalCat3.id, description: 'Use a bicycle or walk to work for an entire month to reduce transport emissions.', xp: 200, difficulty: 'Hard', evidenceRequired: true, deadline: new Date('2024-08-31'), status: 'COMPLETED' } });
-  const ch3 = await prisma.challenge.create({ data: { title: 'Smart Energy Audit', categoryId: chalCat1.id, description: 'Perform a personal energy audit of your workspace and suggest 3 improvements.', xp: 50, difficulty: 'Easy', evidenceRequired: false, deadline: new Date('2024-12-31'), status: 'DRAFT' } });
+  const ch1 = await prisma.challenge.create({ data: { title: 'Zero Waste Week', categoryId: chalCat2.id, description: 'Go an entire week generating zero landfill waste. Document your journey!', xp: 100, difficulty: 'Medium', evidenceRequired: true, deadline: new Date('2026-09-30'), status: 'ACTIVE' } });
+  const ch2 = await prisma.challenge.create({ data: { title: 'Cycle to Work Month', categoryId: chalCat3.id, description: 'Use a bicycle or walk to work for an entire month to reduce transport emissions.', xp: 200, difficulty: 'Hard', evidenceRequired: true, deadline: new Date('2026-08-31'), status: 'COMPLETED' } });
+  const ch3 = await prisma.challenge.create({ data: { title: 'Smart Energy Audit', categoryId: chalCat1.id, description: 'Perform a personal energy audit of your workspace and suggest 3 improvements.', xp: 50, difficulty: 'Easy', evidenceRequired: false, deadline: new Date('2026-12-31'), status: 'DRAFT' } });
 
   // Participations for active challenge
   await prisma.challengeParticipation.create({ data: { challengeId: ch1.id, employeeId: emp1.id, progress: 60, approvalStatus: 'PENDING' } });
@@ -459,21 +459,21 @@ Employees who demonstrate exceptional sustainability leadership may be recognize
   // ─── Step 15: Audits + Compliance Issues ──────────
   console.log('🔍 Creating audits and compliance issues...');
 
-  const audit1 = await prisma.audit.create({ data: { scope: 'Q2 Environmental Compliance Review', departmentId: opsDept.id, date: new Date('2024-06-15'), auditorId: opsHead.id, status: 'COMPLETED' } });
-  const audit2 = await prisma.audit.create({ data: { scope: 'H1 Social Governance Audit', departmentId: engDept.id, date: new Date('2024-07-01'), auditorId: engHead.id, status: 'SCHEDULED' } });
+  const audit1 = await prisma.audit.create({ data: { scope: 'Q2 Environmental Compliance Review', departmentId: opsDept.id, date: new Date('2026-06-15'), auditorId: opsHead.id, status: 'COMPLETED' } });
+  const audit2 = await prisma.audit.create({ data: { scope: 'H1 Social Governance Audit', departmentId: engDept.id, date: new Date('2026-07-01'), auditorId: engHead.id, status: 'SCHEDULED' } });
 
-  await prisma.complianceIssue.create({ data: { auditId: audit1.id, severity: 'HIGH', description: 'Emission data reporting delayed by more than 15 days for 3 consecutive months.', ownerId: emp1.id, dueDate: new Date('2024-07-15'), status: 'IN_PROGRESS' } });
-  await prisma.complianceIssue.create({ data: { auditId: audit1.id, severity: 'MEDIUM', description: 'Missing documentation for fleet diesel consumption in April.', ownerId: emp2.id, dueDate: new Date('2024-07-30'), status: 'OPEN' } });
+  await prisma.complianceIssue.create({ data: { auditId: audit1.id, severity: 'HIGH', description: 'Emission data reporting delayed by more than 15 days for 3 consecutive months.', ownerId: emp1.id, dueDate: new Date('2026-07-15'), status: 'IN_PROGRESS' } });
+  await prisma.complianceIssue.create({ data: { auditId: audit1.id, severity: 'MEDIUM', description: 'Missing documentation for fleet diesel consumption in April.', ownerId: emp2.id, dueDate: new Date('2026-07-30'), status: 'OPEN' } });
   // Overdue issue
-  await prisma.complianceIssue.create({ data: { auditId: audit1.id, severity: 'CRITICAL', description: 'Hazardous waste disposal procedure not following updated EPA guidelines.', ownerId: emp3.id, dueDate: new Date('2024-06-01'), status: 'OPEN' } });
+  await prisma.complianceIssue.create({ data: { auditId: audit1.id, severity: 'CRITICAL', description: 'Hazardous waste disposal procedure not following updated EPA guidelines.', ownerId: emp3.id, dueDate: new Date('2026-06-01'), status: 'OPEN' } });
 
   console.log('   ✅ 2 audits with 3 compliance issues\n');
 
   // ─── Step 16: Department Scores ───────────────────
   console.log('📊 Creating department scores...');
 
-  await prisma.departmentScore.create({ data: { departmentId: opsDept.id, period: '2024-Q2', envScore: 82, socialScore: 74, govScore: 85, totalScore: 80.3 } });
-  await prisma.departmentScore.create({ data: { departmentId: engDept.id, period: '2024-Q2', envScore: 78, socialScore: 80, govScore: 72, totalScore: 76.8 } });
+  await prisma.departmentScore.create({ data: { departmentId: opsDept.id, period: '2026-Q2', envScore: 82, socialScore: 74, govScore: 85, totalScore: 80.3 } });
+  await prisma.departmentScore.create({ data: { departmentId: engDept.id, period: '2026-Q2', envScore: 78, socialScore: 80, govScore: 72, totalScore: 76.8 } });
 
   console.log('   ✅ 2 department scores\n');
 

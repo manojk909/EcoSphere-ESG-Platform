@@ -36,7 +36,7 @@ export default function Dashboard() {
   const handleRecalculate = async () => {
     setRecalcLoading(true)
     try {
-      await api.post('/scores/recalculate', { period: '2024-Q2' })
+      await api.post('/scores/recalculate', { period: '2026-Q3' })
       await fetchData()
     } catch (e) { console.error(e) }
     finally { setRecalcLoading(false) }
