@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+/* ─── Design Tokens ─────────────────────────────── */
+@theme {
+  --color-env-primary: #059669;
+  --color-env-light: #D1FAE5;
+  --color-social-primary: #2563EB;
+  --color-social-light: #DBEAFE;
+  --color-gov-primary: #7C3AED;
+  --color-gov-light: #EDE9FE;
+  --color-game-primary: #D97706;
+  --color-game-light: #FEF3C7;
+  --color-bg: #F8FAFC;
+  --color-surface: #FFFFFF;
+  --color-border: #E2E8F0;
+  --color-text-primary: #0F172A;
+  --color-text-secondary: #64748B;
+  --color-success: #16A34A;
+  --color-danger: #DC2626;
+  --color-warning: #D97706;
+  --color-info: #2563EB;
+}
+
+/* ─── Base Styles ───────────────────────────────── */
+@layer base {
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
+  }
+}
+
+/* ─── Scrollbar ─────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-border);
+  border-radius: 3px;
+}
