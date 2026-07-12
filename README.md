@@ -64,5 +64,3 @@ Badges are automatically awarded whenever a user earns XP, completes a CSR activ
 ### ESG Scoring Engine
 Scores are dynamically computed across three dimensions (Env, Social, Gov) factoring in goal completion, activity participation rates, policy acknowledgments, and open compliance issues. This is orchestrated via an on-demand calculation triggered by the Admin on the Dashboard.
 
-## Who Built What
-- **Environmental, Social, Governance, Gamification & Foundation Modules:** Built autonomously by AI via a 5-hour hackathon simulation prompt.
