@@ -16,7 +16,7 @@ import {
 import { Leaf, Mail, Lock, User, Building2, Loader2, AlertCircle } from 'lucide-react'
 
 interface Department {
-  _id: string
+  id: string
   name: string
 }
 
@@ -35,8 +35,9 @@ export default function Signup() {
   useEffect(() => {
     const fetchDepartments = async () => {
       try {
-        const data = await api.get<Department[]>('/departments')
-        setDepartments(data)
+        const data = await api.get<any>('/departments')
+        const depts = Array.isArray(data) ? data : data.departments || []
+        setDepartments(depts)
       } catch {
         // Departments will be empty — user can still enter manually or API is down
         setDepartments([])
@@ -205,7 +206,7 @@ export default function Signup() {
                     <SelectContent>
                       {departments.length > 0 ? (
                         departments.map((dept) => (
-                          <SelectItem key={dept._id} value={dept._id}>
+                          <SelectItem key={dept.id} value={dept.id}>
                             {dept.name}
                           </SelectItem>
                         ))
