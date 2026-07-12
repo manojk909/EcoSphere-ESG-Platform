@@ -1,2 +1,2 @@
-# Get-Assetflow
-A complete resource management solution featuring real-time allocations, maintenance scheduling, notifications, and advanced role-based access control.
+# EcoSphere-ESG-Platform
+Full-stack ESG management platform — carbon tracking, CSR & governance workflows, and gamified employee engagement. Built for the Odoo Hiring Hackathon.
