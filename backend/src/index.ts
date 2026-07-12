@@ -22,11 +22,15 @@ import categoryRoutes from './routes/categories';
 const app = express();
 
 // ─── CORS Configuration ────────────────────────────
-// Allow the Vite frontend dev server on localhost:5173 to make cross-origin
-// requests. In production, this should be restricted to the actual domain.
+const allowedOrigins = [
+  'http://localhost:5173',
+  'http://127.0.0.1:5173',
+  ...(process.env.FRONTEND_URL ? [process.env.FRONTEND_URL] : [])
+];
+
 app.use(
   cors({
-    origin: ['http://localhost:5173', 'http://127.0.0.1:5173'],
+    origin: allowedOrigins,
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
