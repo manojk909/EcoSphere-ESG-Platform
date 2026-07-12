@@ -24,6 +24,7 @@ import {
   Wrench,
   ChevronLeft,
   ChevronRight,
+  FileText,
 } from 'lucide-react'
 import { Separator } from '@/components/ui/separator'
 import { Badge } from '@/components/ui/badge'
@@ -50,6 +51,7 @@ const navGroups: NavGroup[] = [
     bgColor: 'bg-bg',
     items: [
       { label: 'Dashboard', path: '/', icon: <LayoutDashboard className="h-4 w-4" /> },
+      { label: 'Reports', path: '/reports', icon: <FileText className="h-4 w-4" /> },
     ],
   },
   {

@@ -5,7 +5,30 @@ import AppShell from '@/components/layout/AppShell'
 import Login from '@/pages/Login'
 import Signup from '@/pages/Signup'
 import Dashboard from '@/pages/Dashboard'
+import Reports from '@/pages/Reports'
 import { Loader2 } from 'lucide-react'
+
+// Environmental Pages
+import EmissionFactors from '@/pages/Environmental/EmissionFactors'
+import CarbonTracking from '@/pages/Environmental/CarbonTracking'
+import Goals from '@/pages/Environmental/Goals'
+import EnvDashboard from '@/pages/Environmental/Dashboard'
+
+// Social Pages
+import CsrActivities from '@/pages/Social/CsrActivities'
+import Approvals from '@/pages/Social/Approvals'
+import Diversity from '@/pages/Social/Diversity'
+
+// Governance Pages
+import Policies from '@/pages/Governance/Policies'
+import Audits from '@/pages/Governance/Audits'
+import ComplianceIssues from '@/pages/Governance/ComplianceIssues'
+
+// Gamification Pages
+import Challenges from '@/pages/Gamification/Challenges'
+import Leaderboard from '@/pages/Gamification/Leaderboard'
+import Rewards from '@/pages/Gamification/Rewards'
+import Badges from '@/pages/Gamification/Badges'
 
 function ProtectedRoute() {
   const { isAuthenticated, isLoading } = useAuth()
@@ -77,27 +100,29 @@ export default function App() {
       <Route element={<ProtectedRoute />}>
         <Route element={<AppShell />}>
           <Route path="/" element={<Dashboard />} />
+          <Route path="/reports" element={<Reports />} />
 
           {/* Environmental */}
-          <Route path="/environmental/emission-factors" element={<ModulePlaceholder title="Emission Factors" color="bg-env-light" />} />
-          <Route path="/environmental/carbon-tracking" element={<ModulePlaceholder title="Carbon Tracking" color="bg-env-light" />} />
-          <Route path="/environmental/goals" element={<ModulePlaceholder title="Environmental Goals" color="bg-env-light" />} />
+          <Route path="/environmental/dashboard" element={<EnvDashboard />} />
+          <Route path="/environmental/emission-factors" element={<EmissionFactors />} />
+          <Route path="/environmental/carbon-tracking" element={<CarbonTracking />} />
+          <Route path="/environmental/goals" element={<Goals />} />
 
           {/* Social */}
-          <Route path="/social/csr-activities" element={<ModulePlaceholder title="CSR Activities" color="bg-social-light" />} />
-          <Route path="/social/participation" element={<ModulePlaceholder title="Participation" color="bg-social-light" />} />
-          <Route path="/social/diversity" element={<ModulePlaceholder title="Diversity & Inclusion" color="bg-social-light" />} />
+          <Route path="/social/csr-activities" element={<CsrActivities />} />
+          <Route path="/social/participation" element={<Approvals />} />
+          <Route path="/social/diversity" element={<Diversity />} />
 
           {/* Governance */}
-          <Route path="/governance/policies" element={<ModulePlaceholder title="Policies" color="bg-gov-light" />} />
-          <Route path="/governance/audits" element={<ModulePlaceholder title="Audits" color="bg-gov-light" />} />
-          <Route path="/governance/compliance" element={<ModulePlaceholder title="Compliance" color="bg-gov-light" />} />
+          <Route path="/governance/policies" element={<Policies />} />
+          <Route path="/governance/audits" element={<Audits />} />
+          <Route path="/governance/compliance" element={<ComplianceIssues />} />
 
           {/* Gamification */}
-          <Route path="/gamification/challenges" element={<ModulePlaceholder title="Challenges" color="bg-game-light" />} />
-          <Route path="/gamification/leaderboard" element={<ModulePlaceholder title="Leaderboard" color="bg-game-light" />} />
-          <Route path="/gamification/rewards" element={<ModulePlaceholder title="Rewards" color="bg-game-light" />} />
-          <Route path="/gamification/badges" element={<ModulePlaceholder title="Badges" color="bg-game-light" />} />
+          <Route path="/gamification/challenges" element={<Challenges />} />
+          <Route path="/gamification/leaderboard" element={<Leaderboard />} />
+          <Route path="/gamification/rewards" element={<Rewards />} />
+          <Route path="/gamification/badges" element={<Badges />} />
 
           {/* Settings */}
           <Route path="/settings/departments" element={<ModulePlaceholder title="Departments" color="bg-bg" />} />

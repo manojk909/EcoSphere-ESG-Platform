@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useAuth } from '@/context/AuthContext'
+import { api } from '@/lib/api'
 import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
@@ -53,8 +54,27 @@ export default function Topbar() {
   const { user, logout } = useAuth()
   const location = useLocation()
   const navigate = useNavigate()
-  const [notificationCount] = useState(3)
+  const [notifications, setNotifications] = useState<any[]>([])
   const pageTitle = getPageTitle(location.pathname)
+
+  import('react').then((React) => {
+    React.useEffect(() => {
+      if (user) {
+        api.get<any[]>('/notifications').then(setNotifications).catch(console.error)
+      }
+    }, [user])
+  })
+
+  const unreadCount = notifications.filter(n => !n.isRead).length
+
+  const handleMarkAllRead = async () => {
+    try {
+      await api.post('/notifications/mark-all-read', {})
+      setNotifications(notifications.map(n => ({ ...n, isRead: true })))
+    } catch (e) {
+      console.error(e)
+    }
+  }
 
   const handleLogout = () => {
     logout()
@@ -83,14 +103,40 @@ export default function Topbar() {
         </div>
 
         {/* Notifications */}
-        <Button variant="ghost" size="icon" className="relative h-9 w-9">
-          <Bell className="h-4 w-4 text-text-secondary" />
-          {notificationCount > 0 && (
-            <span className="absolute -top-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-danger text-[10px] font-bold text-white">
-              {notificationCount}
-            </span>
-          )}
-        </Button>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" size="icon" className="relative h-9 w-9">
+              <Bell className="h-4 w-4 text-text-secondary" />
+              {unreadCount > 0 && (
+                <span className="absolute -top-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-danger text-[10px] font-bold text-white">
+                  {unreadCount}
+                </span>
+              )}
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end" className="w-80">
+            <div className="flex items-center justify-between px-4 py-2 border-b border-border">
+              <span className="font-semibold text-sm">Notifications</span>
+              {unreadCount > 0 && (
+                <Button variant="ghost" size="sm" onClick={handleMarkAllRead} className="h-auto p-0 text-xs text-env-primary">
+                  Mark all as read
+                </Button>
+              )}
+            </div>
+            <div className="max-h-64 overflow-y-auto">
+              {notifications.length === 0 ? (
+                <div className="p-4 text-center text-sm text-text-secondary">No notifications</div>
+              ) : (
+                notifications.map((notif) => (
+                  <div key={notif.id} className={`p-3 text-sm border-b border-border last:border-0 ${notif.isRead ? 'opacity-60' : 'bg-surface'}`}>
+                    <p className="text-text-primary">{notif.message}</p>
+                    <span className="text-[10px] text-text-secondary">{new Date(notif.createdAt).toLocaleString()}</span>
+                  </div>
+                ))
+              )}
+            </div>
+          </DropdownMenuContent>
+        </DropdownMenu>
 
         {/* User Dropdown */}
         <DropdownMenu>

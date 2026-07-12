@@ -10,6 +10,13 @@ import authRoutes from './routes/auth';
 import departmentRoutes from './routes/departments';
 import configRoutes from './routes/config';
 import employeeRoutes from './routes/employees';
+import environmentalRoutes from './routes/environmental';
+import socialRoutes from './routes/social';
+import governanceRoutes from './routes/governance';
+import gamificationRoutes from './routes/gamification';
+import scoreRoutes from './routes/scores';
+import notificationRoutes from './routes/notifications';
+import reportRoutes from './routes/reports';
 
 const app = express();
 
@@ -43,6 +50,13 @@ app.use('/api/auth', authRoutes);
 app.use('/api/departments', departmentRoutes);
 app.use('/api/config', configRoutes);
 app.use('/api/employees', employeeRoutes);
+app.use('/api/environmental', environmentalRoutes);
+app.use('/api/social', socialRoutes);
+app.use('/api/governance', governanceRoutes);
+app.use('/api/gamification', gamificationRoutes);
+app.use('/api/scores', scoreRoutes);
+app.use('/api/notifications', notificationRoutes);
+app.use('/api/reports', reportRoutes);
 
 // ─── 404 Handler ────────────────────────────────────
 app.use((_req: Request, res: Response) => {
