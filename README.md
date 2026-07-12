@@ -1,9 +1,8 @@
 # 🌍 EcoSphere — Enterprise ESG Management Platform
 
-![Dashboard Preview](https://via.placeholder.com/1200x600.png?text=EcoSphere+ESG+Dashboard)
-*(Note: Add your actual dashboard screenshot to the repo and update this image link)*
-
 EcoSphere is a comprehensive **Environmental, Social, and Governance (ESG)** management platform designed to help organizations track, report, and gamify their sustainability goals. Built for the modern enterprise, it combines robust analytics with employee engagement to drive real-world impact.
+
+<img width="1918" height="897" alt="image" src="https://github.com/user-attachments/assets/c9067b88-bf01-46f3-b7a8-21c480faf8bf" />
 
 ---
 
@@ -79,6 +78,7 @@ We use **Neon** for PostgreSQL database hosting.
    JWT_SECRET="your-secure-jwt-secret"
    PORT=4000
    ```
+<img width="1918" height="1011" alt="image" src="https://github.com/user-attachments/assets/25207e0c-b5d1-43ca-a126-a687e1cb98fc" />
 
 ### 2. Backend Initialization
 ```bash
