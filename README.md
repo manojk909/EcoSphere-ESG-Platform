@@ -6,10 +6,6 @@ EcoSphere is a comprehensive **Environmental, Social, and Governance (ESG)** man
 
 ---
 
-## 🚀 Live Demo
-- **Frontend:** [https://ecosphere-esg-platform.vercel.app](https://ecosphere-esg-platform.vercel.app)
-- **Backend API:** [https://ecosphere-backend-xxxx.onrender.com](https://ecosphere-backend-xxxx.onrender.com)
-
 ### 🔑 Demo Credentials
 | Role | Email | Password |
 |------|-------|----------|
